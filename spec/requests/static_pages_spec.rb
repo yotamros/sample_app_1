@@ -11,7 +11,7 @@ describe "Static pages" do
   
   describe "Home page" do
     before { visit root_path }
-    let(:heading)       { 'Sample App' }
+    let(:heading)       { 'Whimper' }
     let(:page_title)    { '' }
     
     it_should_behave_like "all static pages"
@@ -30,6 +30,23 @@ describe "Static pages" do
         user.feed.each do |item|
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
+      end
+      
+      it "should render the user's feed" do
+        user.feed.each do |item|
+          expect(page).to have_selector("li##{item.id}", text: item.content)
+        end
+      end
+
+      describe "follower/following counts" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        before do
+          other_user.follow!(user)
+          visit root_path
+        end
+
+        it { should have_link("0 following", href: following_user_path(user)) }
+        it { should have_link("1 followers", href: followers_user_path(user)) }
       end
     end
   end
@@ -69,7 +86,7 @@ describe "Static pages" do
       click_link "Home"
       click_link "Sign up now!"
       expect(page).to have_title(full_title('Sign'))
-      click_link "sample app"
+      click_link "Whimper"
       expect(page).to have_title(full_title(''))
     end
   

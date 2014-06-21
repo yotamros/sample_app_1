@@ -18,6 +18,8 @@ html {
 
 body {
   padding-top: 60px;
+  background: url("http://pathtogod.files.wordpress.com/2011/08/anger.jpg");
+  background-repeat:no-repeat;
 }
 
 section {
@@ -26,6 +28,10 @@ section {
 
 textarea {
   resize: vertical;
+}
+
+.hero-unit {
+  background-color: rgba(200, 255, 0, 0.2);
 }
 
 .center {
@@ -72,11 +78,10 @@ p {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 3px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: grey;
     text-decoration: none;
   }
 }
@@ -98,7 +103,7 @@ footer {
     float: left;
   }
   ul {
-    float: right;
+    float: left;
     list-style: none;
     li {
       float: left;
@@ -141,6 +146,36 @@ aside {
 	}
   }
 }
+
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}
+
 
 .gravatar {
   float: left;
